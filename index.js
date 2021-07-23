@@ -29,14 +29,17 @@ myFunction();
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
 function summation(number) {
+
   let total = 0;
+
   for (let i = 0; i <= number; i++){
     total += i;
   }
+  
   return total;
-  }
+}
 
-  console.log("Task 2 - ", summation(4));
+console.log("Task 2 - ", summation(4));
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -62,11 +65,14 @@ const zooAnimals = [
   */
 
   function animalNames(array){
+
     const displayNames = [];
+
     array.forEach(function(item){
       displayNames.push(`name: ${item["animal_name"]}, scientific: ${item["scientific_name"]}`)
       return 
     });
+
     return displayNames;
   }
 
@@ -80,9 +86,11 @@ const zooAnimals = [
   */
 
   function lowerCaseNames(array){
+
     const lowerCaseArray = array.map(function(item){
       return item.animal_name.toLowerCase();
     });
+
     return lowerCaseArray;
   }
 
@@ -95,9 +103,11 @@ const zooAnimals = [
   */
 
   function lowPopulationAnimals(array){
+
     const lowPopArray = array.filter(function(item){
       return item.population < 5;
     });
+
     return lowPopArray;
   }
   
@@ -110,9 +120,11 @@ const zooAnimals = [
   */
 
   function USApop(array){
+
     const sumPop = array.reduce(function(acc, item){
     return acc + item.population;
     },0);
+
     return sumPop;
   }
   
@@ -135,41 +147,42 @@ const zooAnimals = [
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(num1, num2){
-    return num1 + num2;
+  function add(num1, num2){
+      return num1 + num2;
   }
-
+  
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(num1, num2){
-   return num1 * num2;
+  function multiply(num1, num2){
+    return num1 * num2;
   }
 
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
   
-function greeting(firstName, lastName){
-   return `Hello ${firstName} ${lastName}, nice to meet you!`
+  function greeting(firstName, lastName){
+    return `Hello ${firstName} ${lastName}, nice to meet you!`
   }
   
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
   // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-  console.log(consume(2, 2, add)); // 4
-  console.log(consume(10, 16, multiply)); // 160
-  console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+  console.log("Topic 2: Callbacks: ")
+  console.log("Add - ", consume(2, 2, add)); // 4
+  console.log("Multiply - ", consume(10, 16, multiply)); // 160
+  console.log("Greeting - ", consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
 //🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
  Use the constructor function named CuboidMaker to accept properties for length, width, and height which can be initialized as an object
 */
-function CuboidMaker(attrs){
-  this.length = attrs.length;
-  this.width = attrs.width;
-  this.height = attrs.height;
-}
+  function CuboidMaker(attrs){
+    this.length = attrs.length;
+    this.width = attrs.width;
+    this.height = attrs.height;
+  }
 
 
 /* 🐴🐴🐴 Step 2: Volume Method 🐴🐴🐴
@@ -209,36 +222,38 @@ function CuboidMaker(attrs){
 
 // 🐴🐴🐴 Test your volume and surfaceArea methods by uncommenting the logs below: 🐴🐴🐴
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
- console.log(cuboid.volume()); // 100
- console.log(cuboid.surfaceArea()); // 130
+  console.log("Topic 3: Prototypes: ");
+  console.log("Volume - ", cuboid.volume()); // 100
+  console.log("Surface Area - ", cuboid.surfaceArea()); // 130
  
 
 // 🦄🦄🦄 Topic 4: Classes 🦄🦄🦄 //
 //🦄🦄🦄 1. Take your prototypes from above and refactor into class syntax. Please rename your class CuboidMakerTwo and your object cuboidTwo 🦄🦄🦄
-class CuboidMakerTwo{
-  constructor(attrs){
-    this.length = attrs.length;
-    this.width = attrs.width;
-    this.height = attrs.height;
+  class CuboidMakerTwo{
+    constructor(attrs){
+      this.length = attrs.length;
+      this.width = attrs.width;
+      this.height = attrs.height;
+    }
+    volume(){
+      return this.length * this.width * this.height;
+    }
+    surfaceArea(){
+      return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
+    }
   }
-  volume(){
-    return this.length * this.width * this.height;
-  }
-  surfaceArea(){
-    return 2 * (this.length * this.width + this.length * this.height + this.width * this.height);
-  }
-}
 
-const cuboidTwo = new CuboidMakerTwo ({
-  length: 4,
-  width: 5,
-  height: 5
-})
+  const cuboidTwo = new CuboidMakerTwo ({
+    length: 4,
+    width: 5,
+    height: 5
+  })
 
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
- console.log(cuboidTwo.volume()); // 100
- console.log(cuboidTwo.surfaceArea()); // 130
+  console.log("Topic 4: Classes: ");
+  console.log("Volume - ", cuboidTwo.volume()); // 100
+  console.log("Surface Area - ", cuboidTwo.surfaceArea()); // 130
 
 
 
@@ -246,9 +261,27 @@ const cuboidTwo = new CuboidMakerTwo ({
 
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
   
+  class CubeMaker extends CuboidMakerTwo {
+    constructor(cubeAttrs){
+      super(cubeAttrs);
+    }
+    cubeVolume(){
+      return this.length **3;
+    }
+    cubeSurfaceArea(){
+      return 6 * this.length **2;
+    }
+  }
 
+  const cubeOne = new CubeMaker ({
+    length: 8,
+    width: 8,
+    height: 8
+  });
 
-
+  console.log("Stretch: Cube Volume - ", cubeOne.cubeVolume());
+  console.log(cubeOne.volume());
+  console.log("Stretch: Cube Surface Area - ", cubeOne.cubeSurfaceArea());
 
 
   /* 🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑 */
